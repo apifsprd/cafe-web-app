@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Indonesian Cafe & Resto | Dibimbing mini project day 21 by Apif Supriadi
+    </title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Style -->
+    <style type="text/tailwindcss">
+      @theme {
+        --font-sans: "Noto Sans", sans-serif;
+      }
+      @layer components {
+        /* Typography */
+        .h1 {
+          @apply text-3xl font-bold tracking-tight text-slate-900;
+        }
+        .h2 {
+          @apply text-2xl font-semibold tracking-tight text-slate-900;
+        }
+        .h3 {
+          @apply text-xl font-semibold tracking-tight text-slate-900;
+        }
+        .h4 {
+          @apply text-lg font-semibold tracking-tight text-slate-900;
+        }
+        .h5 {
+          @apply text-base font-semibold tracking-tight text-slate-900;
+        }
+        .paragraph {
+          @apply text-base text-slate-900;
+        }
+        /* Form */
+        .input-wrapper {
+          @apply flex flex-col gap-1;
+        }
+        .input {
+          @apply block w-full rounded-lg border border-slate-300 bg-white py-4 px-3 text-sm placeholder:text-slate-400 focus:z-10 focus:border-sky-500 focus:outline-none focus:ring-sky-500;
+        }
+        /* Button */
+        .button-primary {
+          @apply flex justify-center items-center gap-2 rounded-lg bg-sky-600 px-5 py-4 text-lg font-semibold text-white  hover:bg-sky-700 focus:bg-sky-700 cursor-pointer;
+        }
+        .button-compact {
+          @apply flex justify-center items-center gap-2 rounded-lg bg-sky-600 px-6 py-3 text-sm font-semibold text-white  hover:bg-sky-700 focus:bg-sky-700 cursor-pointer;
+        }
+        .button-icon {
+          @apply flex justify-center items-center p-2 bg-slate-100 rounded-full cursor-pointer hover:bg-slate-200 focus:bg-slate-200;
+        }
+        .button-tab {
+          @apply flex justify-center items-center gap-2 rounded-full bg-slate-100 px-5 py-3 text-lg font-semibold text-slate-900 hover:bg-slate-200 focus:bg-slate-200 cursor-pointer;
+        }
+        .button-tab-active {
+          @apply flex justify-center items-center gap-2 rounded-full bg-sky-300 px-5 py-3 text-lg font-semibold text-sky-900 hover:bg-sky-400 focus:bg-sky-400 cursor-pointer;
+        }
+        /* Card */
+        .card {
+          @apply flex flex-row gap-2 rounded-xl hover:shadow-xl transition duration-300 border border-slate-200 bg-white p-2 w-full md:w-[235px];
+        }
+      }
+    </style>
+  </head>
+  <body class="flex flex-col w-screen min-h-screen p-3 gap-4">
+    <header class="flex h-auto flex-row justify-start items-center gap-2">
+      <a href="index.html" class="button-icon">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </a>
+      <div class="flex flex-1 flex-col justify-center items-center gap-2">
+        <h4 class="h4">Pesanan</h4>
+      </div>
+    </header>
+    <main class="flex relative flex-1 flex-col justify-start items-start gap-4">
+      <section class="flex flex-col gap-2">
+        <h5 class="h5">Daftar Pesanan (3 items)</h5>
+        <div class="flex flex-col gap-2 w-full">
+          <div class="card">
+            <div class="w-[25%] h-[25%] object-cover">
+              <img
+                src="https://placehold.co/500x500/skyblue/white"
+                alt=""
+                class="w-full h-full rounded-lg"
+              />
+            </div>
+            <div class="w-[75%] flex flex-row gap-2">
+              <div class="w-[75%] flex flex-col gap-2">
+                <p class="paragraph font-semibold truncate">
+                  Lorem ipsum dolor sit amet.
+                </p>
+                <p class="paragraph text-slate-600">Rp. 25.000</p>
+              </div>
+              <div class="flex justify-end items-center w-[25%]">
+                <button
+                  type="button"
+                  class="button-icon w-10 h-10 rounded-full"
+                >
+                  <i data-lucide="plus" class="w-10 h-10"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div
+        class="fixed p-2 rounded-lg bg-white shadow-lg border border-slate-200 bottom-0 w-[95%] flex flex-row justify-start items-center gap-4"
+      >
+        <div class="p-4 bg-sky-100 rounded-lg flex items-center">
+          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <p class="h5">3 items</p>
+          <p class="paragraph">Rp. <span class="font-semibold">75.000</span></p>
+        </div>
+        <div class="ml-auto">
+          <button type="button" class="button-compact">View Order</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Lucide Icon -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
