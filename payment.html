@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Indonesian Cafe & Resto | Dibimbing mini project day 21 by Apif Supriadi
+    </title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Style -->
+    <style type="text/tailwindcss">
+      @theme {
+        --font-sans: "Noto Sans", sans-serif;
+      }
+      @layer components {
+        /* Typography */
+        .h1 {
+          @apply text-3xl font-bold tracking-tight text-slate-900;
+        }
+        .h2 {
+          @apply text-2xl font-semibold tracking-tight text-slate-900;
+        }
+        .h3 {
+          @apply text-xl font-semibold tracking-tight text-slate-900;
+        }
+        .h4 {
+          @apply text-lg font-semibold tracking-tight text-slate-900;
+        }
+        .h5 {
+          @apply text-base font-semibold tracking-tight text-slate-900;
+        }
+        .paragraph {
+          @apply text-base text-slate-900;
+        }
+        /* Form */
+        .wrapper {
+          @apply flex flex-col gap-1;
+        }
+        .input {
+          @apply block w-full rounded-lg border border-slate-300 bg-white py-4 px-3 text-sm placeholder:text-slate-400 focus:z-10 focus:border-sky-500 focus:outline-none focus:ring-sky-500;
+        }
+        /* Button */
+        .button-primary {
+          @apply flex justify-center items-center gap-2 rounded-lg bg-sky-600 px-5 py-4 text-lg font-semibold text-white  hover:bg-sky-700 focus:bg-sky-700 cursor-pointer;
+        }
+        .button-compact {
+          @apply flex justify-center items-center gap-2 rounded-lg bg-sky-600 px-6 py-3 text-sm font-semibold text-white  hover:bg-sky-700 focus:bg-sky-700 cursor-pointer;
+        }
+        .button-icon {
+          @apply flex justify-center items-center p-2 bg-slate-100 rounded-full cursor-pointer hover:bg-slate-200 focus:bg-slate-200;
+        }
+        .button-tab {
+          @apply flex justify-center items-center gap-2 rounded-full bg-slate-100 px-5 py-3 text-lg font-semibold text-slate-900 hover:bg-slate-200 focus:bg-slate-200 cursor-pointer;
+        }
+        .button-tab-active {
+          @apply flex justify-center items-center gap-2 rounded-full bg-sky-300 px-5 py-3 text-lg font-semibold text-sky-900 hover:bg-sky-400 focus:bg-sky-400 cursor-pointer;
+        }
+        /* Card */
+        .card {
+          @apply flex flex-row gap-2 rounded-xl hover:shadow-xl transition duration-300 border border-slate-200 bg-white p-2 w-full md:w-[235px];
+        }
+      }
+    </style>
+  </head>
+  <body class="flex flex-col w-screen min-h-screen p-3 gap-4">
+    <header class="flex h-auto flex-row justify-start items-center gap-2">
+      <a href="index.html" class="button-icon">
+        <i data-lucide="chevron-left" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+      </a>
+      <div class="flex flex-1 flex-col justify-center items-center gap-0">
+        <h4 class="h4">Pembayaran</h4>
+        <p class="paragraph text-sm text-slate-600">#INV1234556</p>
+      </div>
+    </header>
+    <main
+      class="flex relative flex-1 flex-col justify-start items-start gap-4 w-full"
+    >
+      <div class="flex flex-col justify-center items-center w-full">
+        <h5 class="h5">Total</h5>
+        <h1 class="h1">Rp <span class="font-semibold">80.145</span></h1>
+      </div>
+      <div class="w-full flex flex-row gap-2 justify-center items-center">
+        <button type="button" class="button-tab-active">
+          <i data-lucide="send" class="w-6 h-6"></i>
+          <p class="paragraph">Transfer</p>
+        </button>
+        <button type="button" class="button-tab">
+          <i data-lucide="scan" class="w-6 h-6"></i>
+          <p class="paragraph">QRIS</p>
+        </button>
+      </div>
+      <div class="flex flex-col gap-2 w-full">
+        <div class="wrapper">
+          <label for="password" class="paragraph">Bank</label>
+          <div
+            class="flex flex-row justify-between items-center gap-2 px-3 py-3 border border-gray-200 rounded-lg"
+          >
+            <div class="flex flex-row justify-start items-center gap-2">
+              <i data-lucide="credit-card" class="w-6 h-6"></i>
+              <p>Bank Central Asia (BCA)</p>
+            </div>
+            <i data-lucide="chevron-down" class="w-6 h-6"></i>
+          </div>
+        </div>
+        <div class="wrapper">
+          <label for="password" class="paragraph">Pedoman</label>
+          <div
+            class="flex flex-row justify-between items-center gap-2 px-3 py-3 border border-gray-200 rounded-lg"
+          >
+            <p class="paragraph">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <span class="font-semibold"
+                >Lorem ipsum dolor sit amet consectetur adipisicing elit.</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="button-compact w-[96%] fixed shadow-lg bottom-4 flex"
+      >
+        Bayar (Rp. 80.145)
+      </button>
+    </main>
+
+    <!-- Lucide Icon -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
