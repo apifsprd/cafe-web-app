@@ -99,15 +99,26 @@
       </div>
       <div class="flex flex-col gap-2 w-full">
         <div class="wrapper">
-          <label for="password" class="paragraph">Bank</label>
-          <div
-            class="flex flex-row justify-between items-center gap-2 px-3 py-3 border border-gray-200 rounded-lg cursor-pointer bg-white"
-          >
-            <div class="flex flex-row justify-start items-center gap-2">
-              <i data-lucide="credit-card" class="w-6 h-6"></i>
-              <p>Bank Central Asia (BCA)</p>
-            </div>
-            <i data-lucide="chevron-down" class="w-6 h-6"></i>
+          <label for="bank" class="paragraph">Bank</label>
+          <div class="relative">
+            <select
+              id="bank"
+              name="bank"
+              class="w-full appearance-none flex flex-row justify-between items-center gap-2 pl-12 pr-3 py-3 border border-gray-200 rounded-lg cursor-pointer bg-white pr-10"
+            >
+              <option value="bca">Bank Central Asia (BCA)</option>
+              <option value="mandiri">Bank Mandiri</option>
+              <option value="bni">Bank Negara Indonesia (BNI)</option>
+              <option value="bri">Bank Rakyat Indonesia (BRI)</option>
+            </select>
+            <i
+              data-lucide="credit-card"
+              class="w-6 h-6 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+            ></i>
+            <i
+              data-lucide="chevron-down"
+              class="w-6 h-6 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+            ></i>
           </div>
         </div>
         <div class="wrapper">
@@ -116,10 +127,12 @@
             class="flex flex-row justify-between items-center gap-2 px-3 py-3 border border-gray-200 rounded-lg bg-white"
           >
             <p class="paragraph">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              <span class="font-semibold"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit.</span
-              >
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem
+              debitis recusandae excepturi officia suscipit placeat corporis
+              dolores nemo. Magnam excepturi ex ducimus debitis, quibusdam alias
+              commodi quidem ab? Quae accusantium voluptate debitis adipisci
+              laudantium atque, veritatis ut aut quis fuga cum architecto amet
+              similique nihil perferendis. At rem voluptatibus earum.
             </p>
           </div>
         </div>
