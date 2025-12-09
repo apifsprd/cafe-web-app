@@ -71,18 +71,17 @@
       }
     </style>
   </head>
-  <body class="flex flex-col w-screen min-h-screen p-3 gap-4">
+  <body class="flex flex-col w-screen min-h-screen p-3 gap-4 bg-slate-50">
     <header class="flex h-auto flex-row justify-start items-center gap-2">
-      <a href="index.html" class="button-icon">
-        <i data-lucide="chevron-left" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+      <a href="order.html" class="button-icon">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
       </a>
-      <div class="flex flex-1 flex-col justify-center items-center gap-0">
+      <div class="flex flex-1 flex-col justify-center items-center pr-11">
         <h4 class="h4">Pembayaran</h4>
-        <p class="paragraph text-sm text-slate-600">#INV1234556</p>
       </div>
     </header>
     <main
-      class="flex relative flex-1 flex-col justify-start items-start gap-4 w-full"
+      class="flex relative flex-1 flex-col justify-start items-start gap-4 w-full sm:px-[10vw] xl:px-[30vw]"
     >
       <div class="flex flex-col justify-center items-center w-full">
         <h5 class="h5">Total</h5>
@@ -102,7 +101,7 @@
         <div class="wrapper">
           <label for="password" class="paragraph">Bank</label>
           <div
-            class="flex flex-row justify-between items-center gap-2 px-3 py-3 border border-gray-200 rounded-lg"
+            class="flex flex-row justify-between items-center gap-2 px-3 py-3 border border-gray-200 rounded-lg cursor-pointer bg-white"
           >
             <div class="flex flex-row justify-start items-center gap-2">
               <i data-lucide="credit-card" class="w-6 h-6"></i>
@@ -114,7 +113,7 @@
         <div class="wrapper">
           <label for="password" class="paragraph">Pedoman</label>
           <div
-            class="flex flex-row justify-between items-center gap-2 px-3 py-3 border border-gray-200 rounded-lg"
+            class="flex flex-row justify-between items-center gap-2 px-3 py-3 border border-gray-200 rounded-lg bg-white"
           >
             <p class="paragraph">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -128,7 +127,7 @@
 
       <button
         type="button"
-        class="button-compact w-[96%] fixed shadow-lg bottom-4 flex"
+        class="button-primary fixed left-4 right-4 bottom-4 mx-auto sm:mx-[10vw] xl:mx-[30vw]"
       >
         Bayar (Rp. 80.145)
       </button>

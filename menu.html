@@ -71,7 +71,7 @@
       }
     </style>
   </head>
-  <body class="flex flex-col w-screen min-h-screen p-3 gap-4">
+  <body class="flex flex-col w-screen min-h-screen p-3 gap-4 bg-slate-50">
     <header class="flex h-auto flex-row justify-start items-center gap-2">
       <a href="index.html" class="button-icon">
         <i data-lucide="chevron-left" class="w-6 h-6"></i>
@@ -80,7 +80,9 @@
         <h4 class="h4">Menu</h4>
       </div>
     </header>
-    <main class="flex relative flex-1 flex-col justify-start items-start gap-4">
+    <main
+      class="flex relative flex-1 flex-col justify-start items-start gap-4 sm:px-[10vw] xl:px-[30vw]"
+    >
       <!-- Search -->
       <div class="w-full relative">
         <label
@@ -107,7 +109,7 @@
         </button>
       </div>
       <!-- Menu -->
-      <div class="w-full flex flex-row flex-wrap justify-start gap-5">
+      <div class="w-full flex flex-row flex-wrap justify-start gap-2 pb-32">
         <div class="card">
           <div class="w-full h-full object-cover">
             <img
@@ -210,17 +212,21 @@
         </div>
       </div>
       <div
-        class="fixed p-2 rounded-lg bg-white shadow-lg border border-slate-200 bottom-0 w-[95%] flex flex-row justify-start items-center gap-4"
+        class="fixed left-0 right-0 bottom-0 p-3 sm:p-4 rounded-t-2xl bg-white shadow-2xl border-t border-slate-200 mx-auto sm:mx-[10vw] xl:mx-[30vw]"
       >
-        <div class="p-4 bg-sky-100 rounded-lg flex items-center">
-          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-        </div>
-        <div>
-          <p class="h5">3 items</p>
-          <p class="paragraph">Rp. <span class="font-semibold">75.000</span></p>
-        </div>
-        <div class="ml-auto">
-          <a href="order.html" class="button-compact">View Order</a>
+        <div class="flex flex-row justify-center items-center gap-2">
+          <div class="p-4 bg-sky-100 rounded-lg flex items-center">
+            <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <p class="h5">3 items</p>
+            <p class="paragraph">
+              Rp. <span class="font-semibold">75.000</span>
+            </p>
+          </div>
+          <div class="ml-auto">
+            <a href="order.html" class="button-compact">View Order</a>
+          </div>
         </div>
       </div>
     </main>
