@@ -22,5 +22,5 @@ Proyek ini adalah sebuah landing page kafe statis yang dirancang sebagai bagian 
 
 1. **Clone repositori ini**
    ```bash
-   git clone [https://github.com/apifsprd/cafe-web-app.git](https://github.com/apifsprd/cafe-web-app.git)
+   git clone https://github.com/apifsprd/cafe-web-app.git
    ```
