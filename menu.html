@@ -7,22 +7,25 @@
       Indonesian Cafe & Resto | Dibimbing mini project day 21 by Apif Supriadi
     </title>
 
-    <!-- Tailwind -->
+    <!-- Tailwind CDN - pakai versi browser biar gak perlu compile -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Font -->
+
+    <!-- Google Font - Noto Sans karena bagus buat bahasa Indonesia -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!-- Style -->
+
+    <!-- Custom Style - bikin component class sendiri biar gak nulis class panjang2 terus -->
     <style type="text/tailwindcss">
       @theme {
+        /* Set default font ke Noto Sans */
         --font-sans: "Noto Sans", sans-serif;
       }
       @layer components {
-        /* Typography */
+        /* Typography Classes - biar konsisten semua text */
         .h1 {
           @apply text-3xl font-bold tracking-tight text-slate-900;
         }
@@ -41,56 +44,77 @@
         .paragraph {
           @apply text-base text-slate-900;
         }
-        /* Form */
+
+        /* Form Components - input field sama labelnya */
         .input-wrapper {
           @apply flex flex-col gap-1;
         }
         .input {
+          /* TODO: cek lagi border-nya, kayaknya kurang tebal */
           @apply block w-full rounded-lg border border-slate-300 bg-white py-4 px-3 text-sm placeholder:text-slate-400 focus:z-10 focus:border-sky-500 focus:outline-none focus:ring-sky-500;
         }
-        /* Button */
+
+        /* Button Components - macam2 jenis button */
+        /* Button utama - warna biru */
         .button-primary {
           @apply flex justify-center items-center gap-2 rounded-lg bg-sky-600 px-5 py-4 text-lg font-semibold text-white  hover:bg-sky-700 focus:bg-sky-700 cursor-pointer transition duration-300;
         }
+        /* Button kecil - buat di bottom bar */
         .button-compact {
           @apply flex justify-center items-center gap-2 rounded-lg bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-sky-700 focus:bg-sky-700 cursor-pointer;
         }
+        /* Button icon bulat - buat tombol plus di card */
         .button-icon {
           @apply flex justify-center items-center p-2 bg-slate-100 rounded-full cursor-pointer hover:bg-slate-200 focus:bg-slate-200;
         }
+        /* Button tab - buat filter makanan/minuman */
         .button-tab {
           @apply flex justify-center items-center gap-2 rounded-full bg-slate-100 px-5 py-3 text-lg font-semibold text-slate-900 hover:bg-slate-200 focus:bg-slate-200 cursor-pointer;
         }
+        /* Button tab yang lagi aktif - warna biru muda */
         .button-tab-active {
           @apply flex justify-center items-center gap-2 rounded-full bg-sky-300 px-5 py-3 text-lg font-semibold text-sky-900 hover:bg-sky-400 focus:bg-sky-400 cursor-pointer;
         }
-        /* Card */
+
+        /* Card Component - buat nampilin item menu */
         .card {
+          /* TODO: width-nya masih hard coded, nanti coba bikin lebih responsive */
           @apply flex flex-col gap-4 rounded-xl hover:shadow-xl transition duration-300 border border-slate-200 bg-white p-3 w-[46%] md:w-[235px];
         }
       }
     </style>
   </head>
+
+  <!-- Body - background abu2 muda -->
   <body class="flex flex-col w-screen min-h-screen p-3 gap-4 bg-slate-50">
+    <!-- HEADER SECTION - Bagian atas halaman -->
     <header class="flex h-auto flex-row justify-start items-center gap-2">
+      <!-- Tombol back ke halaman index -->
       <a href="index.html" class="button-icon">
         <i data-lucide="chevron-left" class="w-6 h-6"></i>
       </a>
+      <!-- Title Menu - ditengah2in -->
       <div class="flex flex-1 flex-col justify-center items-center gap-2">
         <h4 class="h4">Menu</h4>
       </div>
     </header>
+
+    <!-- MAIN CONTENT - Isi utama halaman -->
+    <!-- padding kiri kanan biar gak mentok di layar gede -->
     <main
       class="flex relative flex-1 flex-col justify-start items-start gap-4 sm:px-[10vw] xl:px-[30vw]"
     >
-      <!-- Search -->
+      <!-- Search Bar - buat cari menu -->
       <div class="w-full relative">
+        <!-- Icon search - posisinya di kanan dalam input -->
         <label
           for="search"
           class="absolute p-2 rounded-full bg-slate-100 right-2 top-1/2 -translate-y-1/2"
         >
           <i data-lucide="search" class="w-6 h-6"></i>
         </label>
+        <!-- Input field search -->
+        <!-- TODO: nanti bikin fitur search-nya beneran pake JS -->
         <input
           type="text"
           id="search"
@@ -99,28 +123,85 @@
           class="input"
         />
       </div>
-      <!-- Tab -->
-      <div class="flex flex-row justify-start items-start gap-2">
+
+      <!-- Tab Filter - buat switch antara Makanan dan Minuman -->
+      <div class="flex flex-row justify-start items-start gap-4">
+        <!-- Tab Makanan - belum aktif -->
+        <!-- TODO: bikin fungsi switch tab pake JavaScript -->
         <button type="button" class="button-tab">
           <p class="paragraph">Makanan</p>
         </button>
+        <!-- Tab Minuman - lagi aktif sekarang -->
         <button type="button" class="button-tab-active">
           <p class="paragraph">Minuman</p>
         </button>
       </div>
-      <!-- Menu -->
-      <div class="w-full flex flex-row flex-wrap justify-start gap-2 pb-32">
+
+      <!-- Menu List - daftar minuman yang dijual -->
+      <!-- pb-32 biar gak ketutupan bottom bar -->
+      <div class="w-full flex flex-row flex-wrap justify-start gap-4 pb-32">
+        <!-- Card Menu Item #1 - Kopi Susu Aren -->
         <div class="card">
-          <div class="w-full h-full object-cover">
+          <!-- Gambar produk -->
+          <!-- aspect-square bikin kotak 1:1, overflow-hidden biar gambar gak keluar -->
+          <div class="w-full aspect-square overflow-hidden">
             <img
-              src="https://placehold.co/500x500/skyblue/white"
-              alt=""
-              class="w-full h-full rounded-lg"
+              src="https://images.unsplash.com/photo-1626595444746-59219e6838ac?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Kopi Susu Aren"
+              class="w-full h-full object-cover rounded-lg"
+            />
+          </div>
+          <!-- Info produk (nama, harga, tombol add) -->
+          <div class="w-full flex flex-1 flex-row justify-between items-end">
+            <!-- Nama dan harga -->
+            <div class="w-[75%] flex flex-col gap-2">
+              <p class="paragraph font-semibold">Kopi Susu Aren</p>
+              <p class="paragraph text-slate-600">Rp. 25.000</p>
+            </div>
+            <!-- Tombol tambah ke order -->
+            <!-- TODO: bikin fungsi add to cart -->
+            <div class="flex flex-1">
+              <button type="button" class="button-icon w-10 h-10 rounded-full">
+                <i data-lucide="plus" class="w-10 h-10"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Menu Item #2 - Es Teh Melati -->
+        <div class="card">
+          <div class="w-full aspect-square overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=1000&auto=format&fit=crop"
+              alt="Es Teh Melati"
+              class="w-full h-full object-cover rounded-lg"
             />
           </div>
           <div class="w-full flex flex-1 flex-row justify-between items-end">
             <div class="w-[75%] flex flex-col gap-2">
-              <p class="paragraph font-semibold">Lorem ipsum dolor sit amet.</p>
+              <p class="paragraph font-semibold">Es Teh Melati</p>
+              <p class="paragraph text-slate-600">Rp. 15.000</p>
+            </div>
+            <div class="flex flex-1">
+              <button type="button" class="button-icon w-10 h-10 rounded-full">
+                <i data-lucide="plus" class="w-10 h-10"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Menu Item #3 - Matcha Latte -->
+        <div class="card">
+          <div class="w-full aspect-square overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1717398804885-a6c22b3e5c2f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWF0Y2hhJTIwbGF0dGV8ZW58MHx8MHx8fDA%3D"
+              alt="Matcha Latte"
+              class="w-full h-full object-cover rounded-lg"
+            />
+          </div>
+          <div class="w-full flex flex-1 flex-row justify-between items-end">
+            <div class="w-[75%] flex flex-col gap-2">
+              <p class="paragraph font-semibold">Matcha Latte</p>
               <p class="paragraph text-slate-600">Rp. 25.000</p>
             </div>
             <div class="flex flex-1">
@@ -130,17 +211,42 @@
             </div>
           </div>
         </div>
+
+        <!-- Card Menu Item #4 - Kopi Americano -->
         <div class="card">
-          <div class="w-full h-full object-cover">
+          <div class="w-full aspect-square overflow-hidden">
             <img
-              src="https://placehold.co/500x500/skyblue/white"
-              alt=""
-              class="w-full h-full rounded-lg"
+              src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1000&auto=format&fit=crop"
+              alt="Kopi Americano"
+              class="w-full h-full object-cover rounded-lg"
             />
           </div>
           <div class="w-full flex flex-1 flex-row justify-between items-end">
             <div class="w-[75%] flex flex-col gap-2">
-              <p class="paragraph font-semibold">Lorem ipsum dolor sit amet.</p>
+              <p class="paragraph font-semibold">Kopi Americano</p>
+              <p class="paragraph text-slate-600">Rp. 15.000</p>
+            </div>
+            <div class="flex flex-1">
+              <button type="button" class="button-icon w-10 h-10 rounded-full">
+                <i data-lucide="plus" class="w-10 h-10"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Menu Item #5 - Kopi Cappucino -->
+        <!-- NOTE: typo nih, harusnya "Cappuccino" pake double c dan double p -->
+        <div class="card">
+          <div class="w-full aspect-square overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=1000&auto=format&fit=crop"
+              alt="Kopi Cappucino"
+              class="w-full h-full object-cover rounded-lg"
+            />
+          </div>
+          <div class="w-full flex flex-1 flex-row justify-between items-end">
+            <div class="w-[75%] flex flex-col gap-2">
+              <p class="paragraph font-semibold">Kopi Cappucino</p>
               <p class="paragraph text-slate-600">Rp. 25.000</p>
             </div>
             <div class="flex flex-1">
@@ -150,80 +256,30 @@
             </div>
           </div>
         </div>
-        <div class="card">
-          <div class="w-full h-full object-cover">
-            <img
-              src="https://placehold.co/500x500/skyblue/white"
-              alt=""
-              class="w-full h-full rounded-lg"
-            />
-          </div>
-          <div class="w-full flex flex-1 flex-row justify-between items-end">
-            <div class="w-[75%] flex flex-col gap-2">
-              <p class="paragraph font-semibold">Lorem ipsum dolor sit amet.</p>
-              <p class="paragraph text-slate-600">Rp. 25.000</p>
-            </div>
-            <div class="flex flex-1">
-              <button type="button" class="button-icon w-10 h-10 rounded-full">
-                <i data-lucide="plus" class="w-10 h-10"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="w-full h-full object-cover">
-            <img
-              src="https://placehold.co/500x500/skyblue/white"
-              alt=""
-              class="w-full h-full rounded-lg"
-            />
-          </div>
-          <div class="w-full flex flex-1 flex-row justify-between items-end">
-            <div class="w-[75%] flex flex-col gap-2">
-              <p class="paragraph font-semibold">Lorem ipsum dolor sit amet.</p>
-              <p class="paragraph text-slate-600">Rp. 25.000</p>
-            </div>
-            <div class="flex flex-1">
-              <button type="button" class="button-icon w-10 h-10 rounded-full">
-                <i data-lucide="plus" class="w-10 h-10"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="w-full h-full object-cover">
-            <img
-              src="https://placehold.co/500x500/skyblue/white"
-              alt=""
-              class="w-full h-full rounded-lg"
-            />
-          </div>
-          <div class="w-full flex flex-1 flex-row justify-between items-end">
-            <div class="w-[75%] flex flex-col gap-2">
-              <p class="paragraph font-semibold">Lorem ipsum dolor sit amet.</p>
-              <p class="paragraph text-slate-600">Rp. 25.000</p>
-            </div>
-            <div class="flex flex-1">
-              <button type="button" class="button-icon w-10 h-10 rounded-full">
-                <i data-lucide="plus" class="w-10 h-10"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+
+        <!-- TODO: nanti tambahin loading skeleton pas data belum load -->
+        <!-- TODO: bikin infinite scroll atau pagination kalo item-nya banyak -->
       </div>
+
+      <!-- Bottom Bar - Floating bar di bawah buat liat order -->
+      <!-- fixed biar nempel di bawah, shadow-2xl biar keliatan melayang -->
       <div
         class="fixed left-0 right-0 bottom-0 p-3 sm:p-4 rounded-t-2xl bg-white shadow-2xl border-t border-slate-200 mx-auto sm:mx-[10vw] xl:mx-[30vw]"
       >
         <div class="flex flex-row justify-center items-center gap-2">
+          <!-- Icon shopping bag -->
           <div class="p-4 bg-sky-100 rounded-lg flex items-center">
             <i data-lucide="shopping-bag" class="w-6 h-6"></i>
           </div>
+          <!-- Info jumlah item dan total harga -->
+          <!-- TODO: ini masih hardcoded, nanti ambil dari data cart beneran -->
           <div>
             <p class="h5">3 items</p>
             <p class="paragraph">
               Rp. <span class="font-semibold">75.000</span>
             </p>
           </div>
+          <!-- Button ke halaman order -->
           <div class="ml-auto">
             <a href="order.html" class="button-compact">View Order</a>
           </div>
@@ -231,8 +287,10 @@
       </div>
     </main>
 
-    <!-- Lucide Icon -->
+    <!-- Lucide Icon Library - buat icon2 -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom JavaScript - logika aplikasi -->
+    <!-- TODO: bikin file script.js-nya -->
     <script src="script.js"></script>
   </body>
 </html>

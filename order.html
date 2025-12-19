@@ -7,23 +7,27 @@
       Indonesian Cafe & Resto | Dibimbing mini project day 21 by Apif Supriadi
     </title>
 
-    <!-- Tailwind -->
+    <!-- Tailwind CDN - pake versi browser -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Font -->
+
+    <!-- Google Font - Noto Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!-- Style -->
+
+    <!-- Custom Style - bikin class sendiri biar gak ngulang2 -->
     <style type="text/tailwindcss">
       @theme {
+        /* Set font default */
         --font-sans: "Noto Sans", sans-serif;
       }
       @layer components {
-        /* Typography */
+        /* Typography Classes - responsive dengan sm: breakpoint */
         .h1 {
+          /* text makin gede di layar desktop */
           @apply text-2xl sm:text-3xl font-bold tracking-tight text-slate-900;
         }
         .h2 {
@@ -41,18 +45,22 @@
         .paragraph {
           @apply text-sm sm:text-base text-slate-900;
         }
-        /* Form */
+
+        /* Form Components */
         .input-wrapper {
           @apply flex flex-col gap-1;
         }
         .input {
+          /* padding responsive - mobile lebih kecil */
           @apply block w-full rounded-lg border border-slate-300 bg-white py-3 sm:py-4 px-3 text-sm placeholder:text-slate-400 focus:z-10 focus:border-sky-500 focus:outline-none focus:ring-sky-500;
         }
-        /* Button */
+
+        /* Button Components */
         .button-primary {
           @apply flex justify-center items-center gap-2 rounded-lg bg-sky-600 px-5 py-4 text-lg font-semibold text-white  hover:bg-sky-700 focus:bg-sky-700 cursor-pointer transition duration-300;
         }
         .button-compact {
+          /* padding responsive biar pas di mobile */
           @apply flex justify-center items-center gap-2 rounded-lg bg-sky-600 px-4 sm:px-6 py-2 sm:py-3 text-sm font-semibold text-white  hover:bg-sky-700 focus:bg-sky-700 cursor-pointer;
         }
         .button-icon {
@@ -64,32 +72,124 @@
         .button-tab-active {
           @apply flex justify-center items-center gap-2 rounded-full bg-sky-300 px-4 sm:px-5 py-2 sm:py-3 text-base sm:text-lg font-semibold text-sky-900 hover:bg-sky-400 focus:bg-sky-400 cursor-pointer;
         }
-        /* Card */
+
+        /* Card - buat item di cart */
         .card {
+          /* flex-row biar gambar di kiri, info di kanan */
           @apply flex flex-row gap-2 sm:gap-3 rounded-xl hover:shadow-xl transition duration-300 border border-slate-200 bg-white p-2 sm:p-3 w-full;
         }
       }
     </style>
   </head>
+
+  <!-- Body - padding dan gap responsive -->
   <body
     class="flex flex-col w-screen min-h-screen p-2 sm:p-3 gap-3 sm:gap-4 bg-slate-50"
   >
+    <!-- HEADER SECTION - Back button dan Invoice Number -->
     <header class="flex h-auto flex-row justify-start items-center gap-2">
+      <!-- Tombol back ke halaman menu -->
       <a href="menu.html" class="button-icon">
         <i data-lucide="chevron-left" class="w-6 h-6"></i>
       </a>
+      <!-- Title dan nomor invoice -->
       <div class="flex flex-1 flex-col justify-center items-center gap-0">
         <h4 class="h4">Pesanan</h4>
+        <!-- TODO: invoice number ini harusnya generate otomatis dari backend -->
         <p class="paragraph text-slate-600">#INV123456789</p>
       </div>
     </header>
+
+    <!-- MAIN CONTENT - List pesanan -->
+    <!-- pb-56 sm:pb-60 biar gak ketutupan bottom summary -->
     <main
       class="flex relative flex-1 flex-col justify-start items-start gap-3 sm:gap-4 pb-56 sm:pb-60 w-full sm:px-[10vw] xl:px-[30vw]"
     >
-      <section class="flex flex-col gap-2 sm:gap-3 w-full">
+      <!-- Section Daftar Pesanan -->
+      <section class="flex flex-col gap-4 sm:gap-3 w-full">
+        <!-- Header section dengan jumlah items -->
         <h5 class="h5">Daftar Pesanan (3 items)</h5>
-        <div class="flex flex-col gap-2 sm:gap-3 w-full">
-          <!-- Card 1 -->
+
+        <!-- Container list card -->
+        <!-- TODO: nanti bikin ini dynamic pake JavaScript, loop dari array cart -->
+        <div class="flex flex-col gap-4 w-full">
+          <!-- Card Order Item #1 -->
+          <!-- NOTE: ini masih hardcoded, seharusnya generate dari data cart -->
+          <div class="card">
+            <!-- Gambar produk - ukuran fixed, flex-shrink-0 biar gak kempes -->
+            <div class="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
+              <!-- TODO: ganti placeholder dengan gambar produk asli -->
+              <img
+                src="https://placehold.co/500x500/skyblue/white"
+                alt="Product"
+                class="w-full h-full rounded-lg object-cover"
+              />
+            </div>
+
+            <!-- Info produk (nama, harga, quantity controls) -->
+            <!-- flex-1 biar ambil sisa space yang ada -->
+            <div class="flex-1 flex flex-col justify-between gap-2">
+              <!-- Nama produk dan harga -->
+              <div class="flex flex-col gap-0.5">
+                <!-- line-clamp-2 biar maksimal 2 baris, sisanya (...) -->
+                <p class="paragraph font-semibold line-clamp-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+                <p class="text-xs sm:text-sm text-slate-600 font-medium">
+                  Rp. 25.000
+                </p>
+              </div>
+
+              <!-- Quantity controls dan tombol hapus -->
+              <div class="w-full flex justify-between items-center gap-2">
+                <!-- Quantity controls (-, number, +) -->
+                <div
+                  class="flex flex-row justify-start items-center gap-1.5 sm:gap-2"
+                >
+                  <!-- Tombol kurangi quantity -->
+                  <!-- TODO: bikin fungsi decrease quantity, kalo 1 tampilin modal konfirmasi hapus -->
+                  <button
+                    type="button"
+                    class="button-icon w-7 h-7 sm:w-8 sm:h-8 rounded-full"
+                  >
+                    <i data-lucide="minus" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                  </button>
+
+                  <!-- Display quantity -->
+                  <!-- min-w biar gak goyang pas angka ganti -->
+                  <div
+                    class="flex flex-row justify-center items-center min-w-6 sm:min-w-8"
+                  >
+                    <p class="text-sm sm:text-base font-medium">2</p>
+                  </div>
+
+                  <!-- Tombol tambah quantity -->
+                  <!-- TODO: bikin fungsi increase quantity, update total harga -->
+                  <button
+                    type="button"
+                    class="button-icon w-7 h-7 sm:w-8 sm:h-8 rounded-full"
+                  >
+                    <i data-lucide="plus" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                  </button>
+                </div>
+
+                <!-- Tombol hapus item - warna merah -->
+                <!-- TODO: bikin modal konfirmasi sebelum hapus -->
+                <button
+                  type="button"
+                  class="button-icon w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-red-100 hover:bg-red-200"
+                >
+                  <i
+                    data-lucide="trash"
+                    class="w-7 h-7 sm:w-5 sm:h-5 text-red-600"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Order Item #2 -->
+          <!-- NOTE: ini duplikat dari card pertama, harusnya component reusable -->
           <div class="card">
             <div class="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
               <img
@@ -142,7 +242,7 @@
             </div>
           </div>
 
-          <!-- Card 2 -->
+          <!-- Card Order Item #3 -->
           <div class="card">
             <div class="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
               <img
@@ -195,82 +295,47 @@
             </div>
           </div>
 
-          <!-- Card 3 -->
-          <div class="card">
-            <div class="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
-              <img
-                src="https://placehold.co/500x500/skyblue/white"
-                alt="Product"
-                class="w-full h-full rounded-lg object-cover"
-              />
-            </div>
-            <div class="flex-1 flex flex-col justify-between gap-2">
-              <div class="flex flex-col gap-0.5">
-                <p class="paragraph font-semibold line-clamp-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <p class="text-xs sm:text-sm text-slate-600 font-medium">
-                  Rp. 25.000
-                </p>
-              </div>
-              <div class="w-full flex justify-between items-center gap-2">
-                <div
-                  class="flex flex-row justify-start items-center gap-1.5 sm:gap-2"
-                >
-                  <button
-                    type="button"
-                    class="button-icon w-7 h-7 sm:w-8 sm:h-8 rounded-full"
-                  >
-                    <i data-lucide="minus" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                  </button>
-                  <div
-                    class="flex flex-row justify-center items-center min-w-6 sm:min-w-8"
-                  >
-                    <p class="text-sm sm:text-base font-medium">2</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="button-icon w-7 h-7 sm:w-8 sm:h-8 rounded-full"
-                  >
-                    <i data-lucide="plus" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                  </button>
-                </div>
-                <button
-                  type="button"
-                  class="button-icon w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-red-100 hover:bg-red-200"
-                >
-                  <i
-                    data-lucide="trash"
-                    class="w-7 h-7 sm:w-5 sm:h-5 text-red-600"
-                  ></i>
-                </button>
-              </div>
-            </div>
-          </div>
+          <!-- TODO: tambahin empty state kalo cart kosong -->
+          <!-- TODO: tambahin loading skeleton pas data belum load -->
         </div>
       </section>
     </main>
 
-    <!-- Summary -->
+    <!-- BOTTOM SUMMARY - Fixed di bawah -->
+    <!-- fixed biar nempel di bawah, shadow-2xl biar keliatan floating -->
     <div
       class="fixed left-0 right-0 bottom-0 p-3 sm:p-4 rounded-t-2xl bg-white shadow-2xl border-t border-slate-200 mx-auto sm:mx-[10vw] xl:mx-[30vw]"
     >
       <div class="flex flex-col gap-2 sm:gap-3">
+        <!-- Subtotal - total sebelum pajak -->
+        <!-- TODO: hitung otomatis dari sum semua item di cart -->
         <div class="flex flex-row justify-between items-center">
           <p class="text-sm sm:text-base text-slate-600">Subtotal</p>
           <p class="text-sm sm:text-base font-medium">Rp. 75.000</p>
         </div>
+
+        <!-- Tax/PPN - 11% dari subtotal -->
+        <!-- TODO: perhitungan PPN harus akurat, pake Math.round biar gak ada desimal aneh -->
         <div class="flex flex-row justify-between items-center">
           <p class="text-sm sm:text-base text-slate-600">Tax (PPN 11%)</p>
           <p class="text-sm sm:text-base font-medium">Rp. 5.145</p>
         </div>
+
+        <!-- Divider -->
         <hr class="border-slate-200" />
+
+        <!-- Total - subtotal + tax -->
         <div class="flex flex-row justify-between items-center">
           <h5 class="h5">Total</h5>
+          <!-- NOTE: typo nih, text-black-600 harusnya text-slate-900 atau text-black -->
           <p class="text-base sm:text-lg font-bold text-black-600">
             Rp. 80.145
           </p>
         </div>
+
+        <!-- Button lanjut bayar -->
+        <!-- w-full biar tombol ambil lebar penuh -->
+        <!-- TODO: validasi dulu sebelum ke payment, pastikan cart gak kosong -->
         <div class="w-full pt-1">
           <a href="payment.html" class="button-primary w-full">
             Lanjut Bayar
@@ -279,10 +344,19 @@
       </div>
     </div>
 
-    <!-- Lucide Icon -->
+    <!-- Lucide Icon Library -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Initialize icons - penting biar icon muncul -->
     <script>
       lucide.createIcons();
     </script>
+
+    <!-- TODO: bikin file script.js terpisah buat handle:
+         - Add/decrease quantity
+         - Delete item dengan konfirmasi
+         - Update subtotal dan total otomatis
+         - Save cart ke localStorage
+         - Load cart dari localStorage pas page load
+    -->
   </body>
 </html>

@@ -7,22 +7,25 @@
       Indonesian Cafe & Resto | Dibimbing mini project day 21 by Apif Supriadi
     </title>
 
-    <!-- Tailwind -->
+    <!-- Tailwind CDN - pake versi browser biar gak ribet setup -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Font -->
+
+    <!-- Google Font - Noto Sans buat font utama -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!-- Style -->
+
+    <!-- Custom Style - class sendiri biar lebih simple -->
     <style type="text/tailwindcss">
       @theme {
+        /* Set default font jadi Noto Sans */
         --font-sans: "Noto Sans", sans-serif;
       }
       @layer components {
-        /* Typography */
+        /* Typography Classes - buat heading dan paragraph */
         .h1 {
           @apply text-3xl font-bold tracking-tight text-slate-900;
         }
@@ -41,39 +44,58 @@
         .paragraph {
           @apply text-base text-slate-900;
         }
-        /* Form */
+
+        /* Form Components - styling input field */
         .input-wrapper {
           @apply flex flex-col gap-1;
         }
         .input {
+          /* focus:ring-sky-500 buat efek outline pas di klik */
           @apply block w-full rounded-lg border border-slate-300 bg-white py-4 px-3 text-sm placeholder:text-slate-400 focus:z-10 focus:border-sky-500 focus:outline-none focus:ring-sky-500;
         }
-        /* Button */
+
+        /* Button Primary - tombol utama warna biru */
         .button-primary {
+          /* transition duration-300 biar hover-nya smooth */
           @apply flex justify-center items-center gap-2 rounded-lg bg-sky-600 px-5 py-4 text-lg font-semibold text-white  hover:bg-sky-700 focus:bg-sky-700 cursor-pointer transition duration-300;
         }
       }
     </style>
   </head>
+
+  <!-- Body - background abu2 muda, padding 2 -->
   <body class="flex flex-col w-screen min-h-screen p-2 bg-slate-50">
+    <!-- HEADER SECTION - Bagian atas halaman login -->
     <header class="flex flex-1 flex-col justify-center items-center gap-2">
+      <!-- Icon Kopi - bulat warna biru muda -->
       <div
         class="flex justify-center items-center p-4 rounded-full bg-sky-100 text-sky-800 mb-4"
       >
         <i data-lucide="coffee" class="w-8 h-8"></i>
       </div>
+      <!-- Nama aplikasi -->
       <h1 class="h1 text-center">Indo Cafe & Resto</h1>
+      <!-- Ucapan selamat datang -->
       <h2 class="h2 text-center">Selamat Datang</h2>
+      <!-- Deskripsi singkat -->
       <p class="paragraph text-center">
         Silahkan masuk untuk melihat menu kami
       </p>
     </header>
+
+    <!-- MAIN CONTENT - Form login -->
     <main class="flex flex-1 flex-col justify-start items-center gap-2">
+      <!-- Judul form -->
       <h3 class="h3">Masuk ke akun Anda</h3>
+
+      <!-- Form Login -->
+      <!-- action ke menu.html - nanti redirect kesana pas submit -->
+      <!-- TODO: nanti tambahin validasi form pake JavaScript -->
       <form
         action="menu.html"
         class="flex flex-col gap-4 w-[90vw] sm:px-[20vw] xl:px-[35vw]"
       >
+        <!-- Input Email -->
         <div class="input-wrapper">
           <label for="email" class="paragraph">Email</label>
           <input
@@ -83,9 +105,13 @@
             placeholder="Masukkan email Anda"
             class="input"
           />
+          <!-- TODO: tambahin error message kalo email salah format -->
         </div>
+
+        <!-- Input Password -->
         <div class="input-wrapper">
           <label for="password" class="paragraph">Kata Sandi</label>
+          <!-- relative buat positioning button eye icon -->
           <div class="relative">
             <input
               type="password"
@@ -94,14 +120,20 @@
               placeholder="Masukkan kata sandi Anda"
               class="input"
             />
+            <!-- Button show/hide password - masih belum fungsi nih -->
+            <!-- TODO: bikin fungsi toggle password visibility pake JS -->
             <button
               type="button"
               class="absolute p-2 rounded-full bg-slate-100 right-2 top-1/2 -translate-y-1/2"
             >
+              <!-- Icon eye-off, nanti ganti jadi eye pas di klik -->
               <i data-lucide="eye-off" class="w-6 h-6"></i>
             </button>
           </div>
         </div>
+
+        <!-- Link Lupa Password -->
+        <!-- TODO: bikin halaman reset password -->
         <a href="#"
           ><p
             class="paragraph underline text-blue-600 underline-offset-4 hover:text-blue-800"
@@ -110,15 +142,22 @@
           </p></a
         >
 
+        <!-- Tombol Submit Login -->
+        <!-- NOTE: ini masih redirect langsung tanpa validasi backend -->
+        <!-- TODO: integrate dengan API login nanti -->
         <button type="submit" class="button-primary">Masuk</button>
       </form>
     </main>
+
+    <!-- FOOTER - Copyright di bawah -->
     <footer class="flex flex-1 flex-col justify-center items-center gap-2">
       <p class="paragraph">&copy; Apif Supriadi 2025</p>
     </footer>
 
-    <!-- Lucide Icon -->
+    <!-- Lucide Icon Library - buat icon2 -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom JavaScript -->
+    <!-- TODO: bikin file script.js buat handle form validation dan toggle password -->
     <script src="script.js"></script>
   </body>
 </html>
