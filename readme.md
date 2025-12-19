@@ -18,16 +18,9 @@ Proyek ini adalah sebuah landing page kafe statis yang dirancang sebagai bagian 
 - **Google Fonts:** Untuk tipografi yang menarik.
 - **Lucide Icons / FontAwesome:** (Sesuaikan jika kamu menggunakannya).
 
-## 📸 Tampilan Proyek
-
-> [!TIP]
-> Masukkan screenshot atau link demo proyekmu di sini agar lebih menarik!
->
-> - **Live Demo:** [Link ke Vercel/GitHub Pages kamu]
-
 ## 🏗️ Cara Menjalankan Secara Lokal
 
 1. **Clone repositori ini**
    ```bash
-   git clone [https://github.com/username-kamu/nama-repo.git](https://github.com/username-kamu/nama-repo.git)
+   git clone [https://github.com/apifsprd/cafe-web-app.git](https://github.com/apifsprd/cafe-web-app.git)
    ```
